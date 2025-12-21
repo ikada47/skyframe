@@ -1,0 +1,10 @@
+{
+  "name": "sf-test",
+  "compatibility_date": "2025-12-19",
+  "assets": {
+    "directory": "./src",
+    "run_worker_first": false
+  },
+  "workers_dev": true,
+  "preview_urls": true
+}

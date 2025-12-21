@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyFrame</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <meta property="og:title" content="Change your X profile picture to show you’ve joined Bluesky!" />
+  <meta property="og:description" content="A simple overlay tool for those on both Bluesky and X." />
+  <meta property="og:image" content="https://media.ikada.net/skyframe/featured.webp" />
+  <meta property="og:url" content="https://skyframe.ikada.net" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://media.ikada.net/skyframe/featured.webp" />
+  <meta name="twitter:title" content="Change your X profile picture to show you’ve joined Bluesky!" />
+  <meta name="description" content="A simple overlay tool for those on both Bluesky and X." />
+  <meta name="fediverse:creator" content="@ikada@mastodon.social">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="github-link">
+        <a href="https://github.com/ikada47/skyframe" target="_blank">
+          <img src="https://media.ikada.net/skyframe/logo-github.svg" alt="GitHub">
+        </a>
+      </div>
+      <div class="title">
+        <h1>SkyFrame</h1>
+        <h2>Change your X profile picture to show you’ve joined Bluesky!</h2>
+      </div>
+    </header>
+    <main>
+      <div class="upload-container">
+        <label for="baseImageInput" tabindex="0">Upload an Image</label>
+        <input type="file" id="baseImageInput" accept="image/*" hidden>
+      </div>
+      <section class="previews-group" aria-labelledby="preview-title">
+        <p class="note">Preview:</p>
+        <div id="timeline-preview">
+          <img id="timeline-icon" src="https://media.ikada.net/skyframe/placeholder.svg" alt="Profile image preview">
+          <div class="timeline-text">
+            <div class="timeline-header">
+              <span class="timeline-name">User name</span>
+              <span class="timeline-handle">@example</span>
+            </div>
+            <div class="timeline-post">Posting from a bluer sky now.</div>
+          </div>
+        </div>
+      </section>
+      <p class="note">Adjust the transparency and font color options to improve visibility:</p>
+      <div class="options-group">
+        <div class="option">
+          <p>Theme</p>
+          <label><input type="radio" name="theme" value="pop" checked> Pop</label>
+          <label><input type="radio" name="theme" value="subtle"> Subtle</label>
+          <label><input type="radio" name="theme" value="strong"> Strong</label>
+        </div>
+        <div class="option">
+          <p>Transparency</p>
+          <label><input type="radio" name="transparency" value="a" checked> A</label>
+          <label><input type="radio" name="transparency" value="b"> B</label>
+        </div>
+        <div class="option">
+          <p>Font color</p>
+          <label><input type="radio" name="fontcolor" value="white" checked> White</label>
+          <label><input type="radio" name="fontcolor" value="black"> Black</label>
+        </div>
+        <div class="option">
+          <p>Text</p>
+          <label><input type="radio" name="text" value="movingto" checked> Moving to</label>
+          <label><input type="radio" name="text" value="movedto"> Moved to</label>
+        </div>
+      </div>
+      <div id="preview-container">
+        <img id="preview" alt="Profile image preview">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="download-button">
+        <button id="downloadPngBtn">Download PNG</button>
+        <button id="downloadJpegBtn">Download JPEG</button>
+      </div>
+      <div class="link">
+        <a href="https://bsky.app/intent/compose?text=Create%20an%20X%20profile%20picture%20that%20says%20you%E2%80%99re%20on%20Bluesky.%20https%3A%2F%2Fskyframe.ikada.net"
+          target="_blank">Share on Bluesky</a>
+      </div>
+      <div class="link">
+        <a href="https://ikada.net/en/2025/bluesky-migration/" target="_blank">Discover other migration projects created
+          by the Bluesky community</a>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <p class="footer-note">
+          Image processing is completed locally. This service does not upload your image to any server.
+        </p>
+      </div>
+      <div>
+        <p class="credit">© 2025 <a href="https://bsky.app/profile/did:plc:27vo27jqgcp7oznavyzyiw3h"
+            target="_blank">ikada</a></p>
+      </div>
+    </footer>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

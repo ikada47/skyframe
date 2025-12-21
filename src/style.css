@@ -1,0 +1,245 @@
+:root {
+  --background: rgb(236, 236, 236);
+  --entry: rgb(245, 245, 245);
+  --border: rgb(227, 227, 227);
+  --text: rgb(22, 30, 39);
+  --text-muted: rgb(102, 102, 102);
+  --img-filter: invert(7%) sepia(34%) saturate(693%) hue-rotate(171deg) brightness(101%) contrast(91%);
+  --transition: opacity 0.2s ease;
+  --section-margin: 27px 0 36px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: rgb(16, 23, 32);
+    --entry: rgb(28, 40, 56);
+    --border: rgb(30, 44, 61);
+    --text: rgb(218, 218, 219);
+    --text-muted: rgb(155, 156, 157);
+    --img-filter: invert(92%) sepia(0%) saturate(13%) hue-rotate(63deg) brightness(97%) contrast(92%);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  padding: 16px 16px 0 16px;
+  max-width: 680px;
+}
+
+.upload-container,
+.previews-group,
+.options-group,
+#preview-container,
+.download-button,
+.link {
+  margin: var(--section-margin);
+}
+
+.github-link img,
+.title img {
+  filter: var(--img-filter);
+}
+
+.github-link {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.github-link img {
+  width: 20px;
+  height: 20px;
+  transition: var(--transition);
+}
+
+:is(.github-link img, .upload-container > label, button):hover {
+  opacity: .8;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 54px 0 0 0;
+}
+
+h2 {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 54px 0;
+}
+
+.upload-container>label,
+button {
+  background-color: var(--text);
+  color: var(--entry);
+  border: none;
+  padding: 10px 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.upload-container>label:focus,
+button:focus {
+  outline: 3px solid rgb(0, 123, 187);
+  outline-offset: 2px;
+}
+
+.note,
+.credit,
+.credit a {
+  color: var(--text-muted);
+}
+
+#timeline-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  background-color: var(--entry);
+  max-width: 300px;
+}
+
+#timeline-preview img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.timeline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.timeline-handle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.timeline-post {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.options-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.option p {
+  margin: 5px 0;
+}
+
+.option>label {
+  accent-color: rgb(63, 63, 63);
+}
+
+
+#preview {
+  max-width: 340px;
+  height: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  border-radius: 50%;
+}
+
+#preview:not([src]),
+#preview[src=""] {
+  display: none;
+}
+
+canvas {
+  display: none;
+}
+
+.download-button {
+  display: flex;
+  gap: 16px;
+}
+
+.link a {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.footer-note {
+  border-top: 2px solid var(--border);
+  padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+
+  :root {
+    --section-margin: 18px 0 24px;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 27px;
+    margin: 36px 0 0 0;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 0 0 36px 0;
+  }
+
+  #timeline-preview,
+  #preview {
+    margin: 0 auto;
+  }
+
+  .options-group,
+  .download-button {
+    justify-content: center;
+  }
+
+  canvas,
+  #preview {
+    max-width: 240px;
+  }
+
+  .upload-container,
+  .previews-group,
+  .options-group,
+  #preview-container,
+  .download-button,
+  .link {
+    margin: 18px 0 24px 0;
+  }
+}
