@@ -58,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+    const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
     if (file.size > maxSizeInBytes) {
-      alert("File size exceeds 5MB. Please upload a smaller image.");
+      alert("File size exceeds 10MB. Please upload a smaller image.");
       return;
     }
 
