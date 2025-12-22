@@ -51,6 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
   baseInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      alert("Unsupported file format. Please upload a JPEG, PNG, or WebP image.");
+      return;
+    }
+
+    const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSizeInBytes) {
+      alert("File size exceeds 5MB. Please upload a smaller image.");
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
@@ -59,6 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
         baseImage = img;
         updateCanvasSize();
         updatePreview();
+      };
+      img.onerror = () => {
+        alert("Failed to load the base image. Please try again with a different file.");
       };
       img.src = ev.target.result;
     };
@@ -86,18 +102,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const frame = new Image();
     frame.crossOrigin = "anonymous";
 
+    let fallbackAttempt = 0;
+
     frame.onload = () => {
       ctx.drawImage(frame, 0, 0, outputSize, outputSize);
       if (callback) callback();
     };
 
     frame.onerror = () => {
-      if (frameUrl.endsWith(".webp")) {
+      if (fallbackAttempt === 0 && frameUrl.endsWith(".webp")) {
         const fallback = frameUrl.replace(".webp", ".png");
         console.warn(`WebP not loaded, falling back to PNG: ${fallback}`);
         frame.src = fallback;
+        fallbackAttempt++;
       } else {
-        alert("Failed to load overlay frame image.");
+        console.error("Failed to load overlay frame image after attempts.");
+        alert("Error: Unable to load the overlay image. Please try again later.");
         if (callback) callback();
       }
     };
@@ -126,9 +146,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  let debounceTimeout;
+
   document.querySelectorAll('input[type="radio"]').forEach((el) => {
     el.addEventListener("change", () => {
-      if (baseImage) updatePreview();
+      if (!baseImage) return;
+
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        updatePreview();
+      }, 500);
     });
   });
 
@@ -137,26 +164,33 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please select an image first.");
       return;
     }
+
+    const mime = format === "jpeg" ? "image/jpeg" : "image/png";
+    if (!canvas.toBlob) {
+      const dataUrl = canvas.toDataURL(mime);
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = `skyframe.${format}`;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      return;
+    }
+
     drawComposite(() => {
-      const mime = format === "jpeg" ? "image/jpeg" : "image/png";
       canvas.toBlob((blob) => {
         if (!blob) return;
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const url = URL.createObjectURL(blob);
-        if (isIOS) {
-          window.open(url, "_blank");
-          alert("On iPhone, tap and hold the image to save it to Photos.");
-        } else {
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = `skyframe.${format}`;
-          a.style.display = "none";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        }
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `skyframe.${format}`;
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 2000);
-      }, mime, format === "jpeg" ? 0.92 : undefined);
+      }, mime);
     });
   }
 
