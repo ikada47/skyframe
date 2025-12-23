@@ -39,6 +39,23 @@
       </div>
     </header>
     <main>
+      <section class="samples">
+        <div>
+          <p class="note">Before and after samples:</p>
+          <ul class="samples-list">
+            <li><img src="https://media.ikada.net/skyframe/sample-pop-before.webp"" alt=" Sample image"></li>
+            <li><img src="https://media.ikada.net/skyframe/sample-subtle-before.webp"" alt=" Sample image"></li>
+            <li><img src="https://media.ikada.net/skyframe/sample-strong-before.webp"" alt=" Sample image"></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="samples-list">
+            <li><img src="https://media.ikada.net/skyframe/sample-pop-after.webp"" alt=" Sample image"></li>
+            <li><img src="https://media.ikada.net/skyframe/sample-subtle-after.webp"" alt=" Sample image"></li>
+            <li><img src="https://media.ikada.net/skyframe/sample-strong-after.webp"" alt=" Sample image"></li>
+          </ul>
+        </div>
+      </section>
       <div class="upload-container">
         <label for="baseImageInput" tabindex="0">Upload an Image</label>
         <input type="file" id="baseImageInput" accept="image/*" hidden>
@@ -57,7 +74,7 @@
         </div>
       </section>
       <p class="note">Adjust the transparency and font color options to improve visibility:</p>
-      <div class="options-group">
+      <section class="options-group">
         <div class="option">
           <p>Theme</p>
           <label><input type="radio" name="theme" value="pop" checked> Pop</label>
@@ -79,7 +96,7 @@
           <label><input type="radio" name="text" value="movingto" checked> Moving to</label>
           <label><input type="radio" name="text" value="movedto"> Moved to</label>
         </div>
-      </div>
+      </section>
       <div id="preview-container">
         <img id="preview" alt="Profile image preview">
         <canvas id="canvas"></canvas>
@@ -88,14 +105,17 @@
         <button id="downloadPngBtn">Download PNG</button>
         <button id="downloadJpegBtn">Download JPEG</button>
       </div>
-      <div class="link">
-        <a href="https://bsky.app/intent/compose?text=Create%20an%20X%20profile%20picture%20that%20says%20you%E2%80%99re%20on%20Bluesky.%20https%3A%2F%2Fskyframe.ikada.net"
-          target="_blank">Share on Bluesky</a>
-      </div>
-      <div class="link">
-        <a href="https://ikada.net/en/2025/bluesky-migration/" target="_blank">Discover other migration projects created
-          by the Bluesky community</a>
-      </div>
+      <section>
+        <div class="link">
+          <a href="https://bsky.app/intent/compose?text=Create%20an%20X%20profile%20picture%20that%20says%20you%E2%80%99re%20on%20Bluesky.%20https%3A%2F%2Fskyframe.ikada.net"
+            target="_blank">Share on Bluesky</a>
+        </div>
+        <div class="link">
+          <a href="https://ikada.net/en/2025/bluesky-migration/" target="_blank">Discover other migration projects
+            created
+            by the Bluesky community</a>
+        </div>
+      </section>
     </main>
     <footer>
       <div>
