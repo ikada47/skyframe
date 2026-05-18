@@ -39,6 +39,11 @@ It currently provides three overlay themes:
   Uses the *Jost* font
 
 All overlay images were created using Affinity (vector graphic editor).
+## Release Notes
+
+- December 2025: Released
+
+- May 2026: Added a Japanese page, added overlay images (light blue and navy blue)
 
 ## License
 

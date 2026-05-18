@@ -75,14 +75,16 @@
           <label><input type="radio" name="theme" value="strong"> Strong</label>
         </div>
         <div class="option">
+          <p>文字色</p>
+          <label><input type="radio" name="fontcolor" value="white" checked> White</label>
+          <label><input type="radio" name="fontcolor" value="lightblue"> Light Blue</label>
+          <label><input type="radio" name="fontcolor" value="black"> Black</label>
+          <label><input type="radio" name="fontcolor" value="navyblue"> Navy Blue</Nav></label>
+        </div>
+        <div class="option">
           <p>透明度</p>
           <label><input type="radio" name="transparency" value="a" checked> A</label>
           <label><input type="radio" name="transparency" value="b"> B</label>
-        </div>
-        <div class="option">
-          <p>文字色</p>
-          <label><input type="radio" name="fontcolor" value="white" checked> White</label>
-          <label><input type="radio" name="fontcolor" value="black"> Black</label>
         </div>
         <div class="option">
           <p>メッセージ</p>
@@ -95,8 +97,8 @@
         <canvas id="canvas"></canvas>
       </div>
       <div class="download-button">
-        <button id="downloadPngBtn">PNGをダウンロード</button>
-        <button id="downloadJpegBtn">JPEGをダウンロード</button>
+        <button id="downloadPngBtn">PNGを保存</button>
+        <button id="downloadJpegBtn">JPEGを保存</button>
       </div>
       <section>
         <div class="link">
@@ -114,7 +116,7 @@
         <a href="https://github.com/ikada47/skyframe" target="_blank">更新履歴 / GitHub</a>
         <ul>
           <li>2025年12月 公開</li>
-          <li>2026年5月 日本語版を追加</li>
+          <li>2026年5月 日本語版を追加 · 文字色を追加</li>
         </ul>
         <p>オーバーレイ画像はAffinityで作成しました。Inter、Montserrat、Jostフォントを使用。</p>
         <p>画像処理は端末内で行われます。画像は外部サーバーに送信されません。</p>
@@ -124,7 +126,7 @@
       </div>
     </footer>
   </div>
-  <script src="../main.js"></script>
+  <script src="../main.js" defer></script>
 </body>
 
 </html>

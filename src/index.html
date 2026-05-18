@@ -16,7 +16,7 @@
   <link rel="alternate" hreflang="ja" href="https://skyframe.ikada.net/ja/">
   <link rel="alternate" hreflang="x-default" href="https://skyframe.ikada.net/">
   <meta property="og:title" content="SkyFrame" />
-  <meta property="og:description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to announce that you've on Bluesky." />
+  <meta property="og:description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to show that you're on Bluesky." />
   <meta property="og:image" content="https://media.ikada.net/skyframe/featured.webp" />
   <meta property="og:url" content="https://skyframe.ikada.net/" />
   <meta property="og:type" content="website" />
@@ -24,7 +24,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://media.ikada.net/skyframe/featured.webp" />
   <meta name="twitter:title" content="SkyFrame" />
-  <meta name="description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to announce that you've on Bluesky." />
+  <meta name="description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to show that you're on Bluesky." />
   <meta name="fediverse:creator" content="@ikada@mastodon.social">
   <script src="./lang.js"></script>
 </head>
@@ -74,14 +74,16 @@
           <label><input type="radio" name="theme" value="strong"> Strong</label>
         </div>
         <div class="option">
+          <p>Font Color</p>
+          <label><input type="radio" name="fontcolor" value="white" checked> White</label>
+          <label><input type="radio" name="fontcolor" value="lightblue"> Light Blue</label>
+          <label><input type="radio" name="fontcolor" value="black"> Black</label>
+          <label><input type="radio" name="fontcolor" value="navyblue"> Navy Blue</Nav></label>
+        </div>
+        <div class="option">
           <p>Transparency</p>
           <label><input type="radio" name="transparency" value="a" checked> A</label>
           <label><input type="radio" name="transparency" value="b"> B</label>
-        </div>
-        <div class="option">
-          <p>Font color</p>
-          <label><input type="radio" name="fontcolor" value="white" checked> White</label>
-          <label><input type="radio" name="fontcolor" value="black"> Black</label>
         </div>
         <div class="option">
           <p>Text</p>
@@ -118,7 +120,7 @@
       </div>
     </footer>
   </div>
-  <script src="./main.js"></script>
+  <script src="./main.js" defer></script>
 </body>
 
 </html>

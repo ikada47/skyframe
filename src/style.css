@@ -172,11 +172,11 @@ button:focus {
 .options-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: .5rem 1.5rem;
 }
 
 .option p {
-  margin: 0 0;
+  margin: 0;
 }
 
 .option>label {
