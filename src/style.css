@@ -6,7 +6,7 @@
   --text-muted: rgb(102, 102, 102);
   --img-filter: invert(7%) sepia(34%) saturate(693%) hue-rotate(171deg) brightness(101%) contrast(91%);
   --transition: opacity 0.2s ease;
-  --section-margin: 27px 0 36px;
+  --section-margin: 1.8rem 0 2rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +23,7 @@
 body {
   background: var(--background);
   color: var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   display: flex;
@@ -34,8 +34,8 @@ body {
 
 .container {
   position: relative;
-  padding: 16px 16px 0 16px;
-  max-width: 680px;
+  padding: 1rem 1rem 0 1rem;
+  max-width: 43rem;
 }
 
 .samples,
@@ -49,58 +49,51 @@ body {
   margin: var(--section-margin);
 }
 
-.github-link img,
-.title img {
-  filter: var(--img-filter);
-}
-
-.github-link {
+.lang-switch {
   position: absolute;
-  top: 24px;
-  right: 24px;
-}
-
-.github-link img {
-  width: 20px;
-  height: 20px;
-  transition: var(--transition);
-}
-
-:is(.github-link img, .upload-container > label, button):hover {
-  opacity: .8;
+  top: 1.5rem;
+  right: 1.5rem;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
-  margin: 54px 0 0 0;
+  margin: 2rem 0 0;
 }
 
 h2 {
-  font-size: 21px;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin: 0 0 54px 0;
+  margin: 0 0 2rem;
+}
+
+.marker {
+  background: linear-gradient(
+    transparent 60%,
+    rgba(0, 170, 255, 0.5) 60%
+  );
 }
 
 .samples-list {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
   padding: 0;
   list-style: none;
 }
 
 .samples-list img {
-  width: 42px;
-  height: 42px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   object-fit: cover;
   display: block;
 }
 
-.upload-container,
-.footer-note {
-  border-top: 2px solid var(--border);
-  padding-top: 40px;
+hr {
+  border: none;
+  height: 3px;
+  background: var(--border);
+  margin: 1.5rem 0 2.5rem;
 }
 
 .upload-container>label,
@@ -108,7 +101,7 @@ button {
   background-color: var(--text);
   color: var(--entry);
   border: none;
-  padding: 10px 18px;
+  padding: .7rem 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
   border-radius: 4px;
   cursor: pointer;
@@ -119,30 +112,30 @@ button {
 
 .upload-container>label:focus,
 button:focus {
-  outline: 3px solid rgb(0, 123, 187);
+  outline: 3px solid rgba(0, 170, 255, 0.5);
   outline-offset: 2px;
 }
 
 .note,
-.credit,
-.credit a {
+.footer-meta,
+.footer-meta a {
   color: var(--text-muted);
 }
 
 #timeline-preview {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 20px 20px;
+  gap: .7rem;
+  padding: 1.3rem 1.3rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
   border-radius: 4px;
   background-color: var(--entry);
-  max-width: 260px;
+  max-width: 17rem;
 }
 
 #timeline-preview img {
-  width: 42px;
-  height: 42px;
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -150,7 +143,7 @@ button:focus {
 .timeline-text {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: .3rem;
   text-align: left;
   line-height: 1.2;
 }
@@ -179,20 +172,19 @@ button:focus {
 .options-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .option p {
-  margin: 5px 0;
+  margin: 0 0;
 }
 
 .option>label {
   accent-color: rgb(63, 63, 63);
 }
 
-
 #preview {
-  max-width: 300px;
+  max-width: 19rem;
   height: auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
   border-radius: 50%;
@@ -212,15 +204,30 @@ canvas {
   gap: 16px;
 }
 
-.link a {
+.footer-meta p,
+.footer-meta ul {
+  margin-block: 0.3rem;
+}
+
+.footer-meta ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.lang-switch a,
+.credit a {
   color: var(--text);
+}
+
+.link a {
+  color: var(--text-muted);
   font-weight: 700;
 }
 
 @media (max-width: 600px) {
 
   :root {
-    --section-margin: 18px 0 24px;
+    --section-margin: 1.5rem 1.7rem;
   }
 
   .container {
@@ -228,13 +235,13 @@ canvas {
   }
 
   h1 {
-    font-size: 27px;
-    margin: 36px 0 0 0;
+  font-size: 1.7rem;
+  margin: 1.5rem 0 0;
   }
 
   h2 {
-    font-size: 18px;
-    margin: 0 0 36px 0;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
   }
 
   #timeline-preview,
@@ -251,14 +258,5 @@ canvas {
   canvas,
   #preview {
     max-width: 240px;
-  }
-
-  .upload-container,
-  .previews-group,
-  .options-group,
-  #preview-container,
-  .download-button,
-  .link {
-    margin: 18px 0 24px 0;
   }
 }

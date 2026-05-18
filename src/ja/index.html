@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkyFrame</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="./favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
   <link rel="alternate" hreflang="en" href="https://skyframe.ikada.net/">
   <link rel="alternate" hreflang="ja" href="https://skyframe.ikada.net/ja/">
   <link rel="alternate" hreflang="x-default" href="https://skyframe.ikada.net/">
   <meta property="og:title" content="SkyFrame" />
-  <meta property="og:description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to announce that you've on Bluesky." />
+  <meta property="og:description" content="Blueskyを始めたことを伝える、X（旧Twitter）用のアイコン画像を作成できます。" />
   <meta property="og:image" content="https://media.ikada.net/skyframe/featured.webp" />
-  <meta property="og:url" content="https://skyframe.ikada.net/" />
+  <meta property="og:url" content="https://skyframe.ikada.net/ja" />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale" content="ja_JP" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://media.ikada.net/skyframe/featured.webp" />
   <meta name="twitter:title" content="SkyFrame" />
-  <meta name="description" content="A simple overlay tool for updating an X (formerly Twitter) profile picture to announce that you've on Bluesky." />
+  <meta name="description" content="Blueskyを始めたことを伝える、X（旧Twitter）用のアイコン画像を作成できます。" />
   <meta name="fediverse:creator" content="@ikada@mastodon.social">
-  <script src="./lang.js"></script>
+  <script src="../lang.js"></script>
 </head>
 
 <body>
   <div class="container">
     <header>
       <div class="lang-switch">
-        <a href="/ja/" onclick="localStorage.setItem('lang-selected', 'ja')">日本語</a>
+        <a href="/" onclick="localStorage.setItem('lang-selected', 'en')">English</a>
       </div>
       <div class="title">
         <h1>SkyFrame</h1>
-        <h2><span class="marker">Change your X profile picture</span> to show you’ve joined Bluesky!</h2>
+        <h2>Blueskyを始めたことを、<span class="marker">Xのプロフィール画像で</span>知らせよう</h2>
       </div>
       <div>
         <ul class="samples-list">
@@ -50,7 +51,7 @@
     <main>
       <hr>
       <div class="upload-container">
-        <label for="baseImageInput" tabindex="0">Choose an Image</label>
+        <label for="baseImageInput" tabindex="0">画像を選択</label>
         <input type="file" id="baseImageInput" accept="image/*" hidden>
       </div>
       <section class="previews-group" aria-labelledby="preview-title">
@@ -58,33 +59,33 @@
           <img id="timeline-icon" src="https://media.ikada.net/skyframe/placeholder.svg" alt="Profile image preview">
           <div class="timeline-text">
             <div class="timeline-header">
-              <span class="timeline-name">User name</span>
+              <span class="timeline-name">ユーザー名</span>
               <span class="timeline-handle">@example</span>
             </div>
-            <div class="timeline-post">Posting from a bluer sky now.</div>
+            <div class="timeline-post">Blueskyにもいます。</div>
           </div>
         </div>
       </section>
-      <p class="note">Adjust the appearance to improve visibility:</p>
+      <p class="note">見た目の調整:</p>
       <section class="options-group">
         <div class="option">
-          <p>Theme</p>
+          <p>デザイン</p>
           <label><input type="radio" name="theme" value="pop" checked> Pop</label>
           <label><input type="radio" name="theme" value="subtle"> Subtle</label>
           <label><input type="radio" name="theme" value="strong"> Strong</label>
         </div>
         <div class="option">
-          <p>Transparency</p>
+          <p>透明度</p>
           <label><input type="radio" name="transparency" value="a" checked> A</label>
           <label><input type="radio" name="transparency" value="b"> B</label>
         </div>
         <div class="option">
-          <p>Font color</p>
+          <p>文字色</p>
           <label><input type="radio" name="fontcolor" value="white" checked> White</label>
           <label><input type="radio" name="fontcolor" value="black"> Black</label>
         </div>
         <div class="option">
-          <p>Text</p>
+          <p>メッセージ</p>
           <label><input type="radio" name="text" value="movingto" checked> Moving to</label>
           <label><input type="radio" name="text" value="movedto"> Moved to</label>
         </div>
@@ -94,31 +95,36 @@
         <canvas id="canvas"></canvas>
       </div>
       <div class="download-button">
-        <button id="downloadPngBtn">Download PNG</button>
-        <button id="downloadJpegBtn">Download JPEG</button>
+        <button id="downloadPngBtn">PNGをダウンロード</button>
+        <button id="downloadJpegBtn">JPEGをダウンロード</button>
       </div>
       <section>
         <div class="link">
-          <a href="https://bsky.app/intent/compose?text=Create+an+X+profile+picture+that+says+you%E2%80%99re+on+Bluesky.%0D%0Ahttps%3A%2F%2Fskyframe.ikada.net"
-            target="_blank">Share on Bluesky</a>
+          <a href="https://bsky.app/intent/compose?text=Bluesky%E3%82%92%E5%A7%8B%E3%82%81%E3%81%9F%E3%81%93%E3%81%A8%E3%82%92%E3%80%81X%E3%81%AE%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E7%94%BB%E5%83%8F%E3%81%A7%E7%9F%A5%E3%82%89%E3%81%9B%E3%82%88%E3%81%86%0D%0Ahttps%3A%2F%2Fskyframe.ikada.net/ja"
+            target="_blank">Blueskyでシェア</a>
         </div>
         <div class="link">
-          <a href="https://ikada.net/en/2025/bluesky-migration/" target="_blank">Discover other migration projects created by the Bluesky community</a>
+          <a href="https://ikada.net/2025/bluesky-migration/" target="_blank">Blueskyへの「移行」に関するいろいろなプロジェクト</a>
         </div>
       </section>
     </main>
     <footer>
       <hr>
       <div class="footer-meta">
-        <a href="https://github.com/ikada47/skyframe" target="_blank">Update History / GitHub</a>
-        <p>Image processing is completed locally. This service does not upload your image to any server.</p>
+        <a href="https://github.com/ikada47/skyframe" target="_blank">更新履歴 / GitHub</a>
+        <ul>
+          <li>2025年12月 公開</li>
+          <li>2026年5月 日本語版を追加</li>
+        </ul>
+        <p>オーバーレイ画像はAffinityで作成しました。Inter、Montserrat、Jostフォントを使用。</p>
+        <p>画像処理は端末内で行われます。画像は外部サーバーに送信されません。</p>
       </div>
       <div>
         <p class="credit">© 2025 <a href="https://bsky.app/profile/did:plc:27vo27jqgcp7oznavyzyiw3h" target="_blank">ikada</a></p>
       </div>
     </footer>
   </div>
-  <script src="./main.js"></script>
+  <script src="../main.js"></script>
 </body>
 
 </html>

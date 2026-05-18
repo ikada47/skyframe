@@ -10,6 +10,53 @@ document.addEventListener("DOMContentLoaded", () => {
   const getValue = (name) =>
     document.querySelector(`input[name="${name}"]:checked`).value;
 
+  const messages = {
+    en: {
+      unsupportedFormat:
+        "Unsupported file format. Please upload a JPEG, PNG, or WebP image.",
+
+      fileTooLarge:
+        "File size exceeds 10MB. Please upload a smaller image.",
+
+      failedBaseImage:
+        "Failed to load the image. Please try again with a different file.",
+
+      failedOverlay:
+        "Unable to load the overlay image. Please try again later.",
+
+      selectImageFirst:
+        "Please select an image first.",
+
+      overlayLoadFailed:
+        "Failed to load overlay frame image after attempts.",
+    },
+
+    ja: {
+      unsupportedFormat:
+        "対応していない画像形式です。JPEG、PNG、WebP画像を選択してください。",
+
+      fileTooLarge:
+        "画像サイズが10MBを超えています。より小さい画像を選択してください。",
+
+      failedBaseImage:
+        "画像を読み込めませんでした。別のファイルをお試しください。",
+
+      failedOverlay:
+        "オーバーレイ画像を読み込めませんでした。時間をおいて再度お試しください。",
+
+      selectImageFirst:
+        "先に画像を選択してください。",
+
+      overlayLoadFailed:
+        "オーバーレイ画像の読み込みに失敗しました。",
+    }
+  };
+
+  const lang =
+    document.documentElement.lang === "ja" ? "ja" : "en";
+
+  const t = (key) => messages[lang][key] || key;
+
   let baseImage = null;
   let outputSize = 1000;
   let supportsWebP = false;
@@ -54,13 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const validTypes = ["image/jpeg", "image/png", "image/webp"];
     if (!validTypes.includes(file.type)) {
-      alert("Unsupported file format. Please upload a JPEG, PNG, or WebP image.");
+      alert(t("unsupportedFormat"));
       return;
     }
 
     const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
     if (file.size > maxSizeInBytes) {
-      alert("File size exceeds 10MB. Please upload a smaller image.");
+      alert(t("fileTooLarge"));
       return;
     }
 
@@ -74,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePreview();
       };
       img.onerror = () => {
-        alert("Failed to load the base image. Please try again with a different file.");
+        alert(t("failedBaseImage"));
       };
       img.src = ev.target.result;
     };
@@ -116,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
         frame.src = fallback;
         fallbackAttempt++;
       } else {
-        console.error("Failed to load overlay frame image after attempts.");
-        alert("Error: Unable to load the overlay image. Please try again later.");
+        console.error(t("overlayLoadFailed"));
+        alert(t("failedOverlay"));
         if (callback) callback();
       }
     };
@@ -161,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function downloadImage(format) {
     if (!baseImage) {
-      alert("Please select an image first.");
+      alert(t("selectImageFirst"));
       return;
     }
 
