@@ -41,9 +41,9 @@ It currently provides three overlay themes:
 All overlay images were created using Affinity (vector graphic editor).
 ## Release Notes
 
-- December 2025: Released
+- December 2025: Published a web page
 
-- May 2026: Added a Japanese page, added overlay images (light blue and navy blue)
+- May 2026: Added a Japanese page, added overlay images (light blue and navy blue), tweaked the appearance of the 'Strong' theme
 
 ## License
 

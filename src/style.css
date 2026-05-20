@@ -2,10 +2,11 @@
   --background: rgb(236, 236, 236);
   --entry: rgb(245, 245, 245);
   --border: rgb(227, 227, 227);
+  --accent: rgb(128, 194, 255);
+  --radio: rgb(0, 116, 184);
   --text: rgb(22, 30, 39);
   --text-muted: rgb(102, 102, 102);
-  --img-filter: invert(7%) sepia(34%) saturate(693%) hue-rotate(171deg) brightness(101%) contrast(91%);
-  --transition: opacity 0.2s ease;
+  --transition: background .2s ease, color .2s ease, border-color .2s ease, opacity 0.2s ease;
   --section-margin: 1.8rem 0 2rem;
 }
 
@@ -14,9 +15,10 @@
     --background: rgb(16, 23, 32);
     --entry: rgb(28, 40, 56);
     --border: rgb(30, 44, 61);
+    --accent: rgb(0, 82, 158);
+    --radio: rgb(77, 189, 255);
     --text: rgb(218, 218, 219);
     --text-muted: rgb(155, 156, 157);
-    --img-filter: invert(92%) sepia(0%) saturate(13%) hue-rotate(63deg) brightness(97%) contrast(92%);
   }
 }
 
@@ -70,7 +72,7 @@ h2 {
 .marker {
   background: linear-gradient(
     transparent 60%,
-    rgba(0, 170, 255, 0.5) 60%
+    var(--accent) 60%
   );
 }
 
@@ -112,7 +114,7 @@ button {
 
 .upload-container>label:focus,
 button:focus {
-  outline: 3px solid rgba(0, 170, 255, 0.5);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -172,15 +174,52 @@ button:focus {
 .options-group {
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem 1.5rem;
+  gap: 1rem;
 }
 
 .option p {
   margin: 0;
 }
 
-.option>label {
-  accent-color: rgb(63, 63, 63);
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem;
+}
+
+.option-buttons input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-buttons span {
+  display: inline-block;
+  padding: .5rem .5rem;
+  min-width: 1.4rem;
+  border-radius: 999px;
+  background: var(--entry);
+  color: var(--primary-font);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.option-buttons label:hover span {
+  opacity: .8;
+}
+
+.option-buttons input:checked + span {
+  background: var(--radio);
+  color: var(--entry);
+  border-color: var(--accent);
+}
+
+.option-buttons input:focus-visible + span {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 #preview {
@@ -251,6 +290,7 @@ canvas {
 
   .samples-list,
   .options-group,
+  .option-buttons,
   .download-button {
     justify-content: center;
   }

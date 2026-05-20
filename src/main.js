@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const ext = supportsWebP ? "webp" : "png";
-    const filename = `frame_${theme}_${transparency}_${fontcolor}_${text}.${ext}`;
+    const filename = `frame_${theme}_${fontcolor}_${transparency}_${text}.${ext}`;
     return `${baseURL}${filename}`;
   }
 
