@@ -2,7 +2,7 @@
 
 A simple web tool that allows users to overlay WebP (or PNG) images to create custom social media icons.
 
-🔗 Published webpage: https://skyframe.ikada.net
+⬈ Published webpage: https://skyframe.ikada.net
 
 ## Project name
 
@@ -26,7 +26,7 @@ ikada
 
 ## Overlay Themes
 
-It currently provides three overlay themes:
+It currently provides four overlay themes:
 
 - **Pop**  
   Uses the *Inter* font  
@@ -35,15 +35,21 @@ It currently provides three overlay themes:
 - **Subtle**  
   Uses the *Montserrat* font
 
-- **Strong**  
+- **Stack**  
+  Uses the *Outfit* font
+
+- **Dynamic**  
   Uses the *Jost* font
 
 All overlay images were created using Affinity (vector graphic editor).
+
 ## Release Notes
 
 - December 2025: Published a web page
 
-- May 2026: Added a Japanese page, added overlay images (light blue and navy blue), tweaked the appearance of the 'Strong' theme
+- May 2026: Added a Japanese page, added overlay images (light blue and navy blue)
+
+- November 2026: Added a new overlay theme, modified the site's appearance
 
 ## License
 

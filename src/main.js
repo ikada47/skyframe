@@ -83,9 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let transparency = getValue("transparency");
     let fontcolor = getValue("fontcolor");
     const text = getValue("text");
-    if (theme === "strong") {
+    if (theme === "stack" || theme === "dynamic") {
       if (transparency !== "a") {
-        console.warn("Strong theme supports only one transparency option. Adjusted automatically.");
+        console.warn("Stack and Dynamic theme supports only one transparency option. Adjusted automatically.");
       }
       transparency = "a";
     }

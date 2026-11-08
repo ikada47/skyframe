@@ -11,21 +11,21 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
   <link rel="alternate" hreflang="en" href="https://skyframe.ikada.net/">
   <link rel="alternate" hreflang="ja" href="https://skyframe.ikada.net/ja/">
   <link rel="alternate" hreflang="x-default" href="https://skyframe.ikada.net/">
   <meta property="og:title" content="SkyFrame" />
-  <meta property="og:description" content="Blueskyを始めたことを伝える、X（旧Twitter）用のアイコン画像を作成できます。" />
-  <meta property="og:image" content="https://media.ikada.net/skyframe/featured.webp" />
+  <meta property="og:description" content="Blueskyを始めたことを、Xのプロフィール画像で知らせよう。" />
+  <meta property="og:image" content="https://media.ikada.net/skyframe/featured.png" />
   <meta property="og:url" content="https://skyframe.ikada.net/ja" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://media.ikada.net/skyframe/featured.webp" />
+  <meta name="twitter:image" content="https://media.ikada.net/skyframe/featured.png" />
   <meta name="twitter:title" content="SkyFrame" />
-  <meta name="description" content="Blueskyを始めたことを伝える、X（旧Twitter）用のアイコン画像を作成できます。" />
+  <meta name="description" content="Blueskyを始めたことを、Xのプロフィール画像で知らせよう。" />
   <meta name="fediverse:creator" content="@ikada@mastodon.social">
   <script src="../lang.js"></script>
 </head>
@@ -38,122 +38,158 @@
       </div>
       <div class="title">
         <h1>SkyFrame</h1>
-        <h2>Blueskyを始めたことを、<span class="marker">Xのプロフィール画像で</span>知らせよう</h2>
+        <h2>Blueskyの存在を<br>Xでアピールする<br>アイコン作成ツール</h2>
       </div>
-      <div>
+      <div class="samples">
         <ul class="samples-list">
-          <li><img src="https://media.ikada.net/skyframe/sample-pop-after.webp" alt=" Sample image"></li>
-          <li><img src="https://media.ikada.net/skyframe/sample-subtle-after.webp" alt=" Sample image"></li>
-          <li><img src="https://media.ikada.net/skyframe/sample-strong-after.webp" alt=" Sample image"></li>
+          <li><img src="https://media.ikada.net/skyframe/sample-pop-after.webp" alt="Sample image"></li>
+          <li><img src="https://media.ikada.net/skyframe/sample-subtle-after.webp" alt="Sample image"></li>
+          <li><img src="https://media.ikada.net/skyframe/sample-stack-after.webp" alt="Sample image"></li>
         </ul>
       </div>
     </header>
+
     <main>
-      <hr>
-      <div class="upload-container">
-        <label for="baseImageInput" tabindex="0">画像を選択</label>
-        <input type="file" id="baseImageInput" accept="image/*" hidden>
-      </div>
-      <section class="previews-group" aria-labelledby="preview-title">
-        <div id="timeline-preview">
-          <img id="timeline-icon" src="https://media.ikada.net/skyframe/placeholder.svg" alt="Profile image preview">
-          <div class="timeline-text">
-            <div class="timeline-header">
-              <span class="timeline-name">ユーザー名</span>
-              <span class="timeline-handle">@example</span>
+      <div class="column">
+        <section class="workflow-card upload-card" aria-labelledby="upload-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">1</span>
+          <h3 id="upload-title">背景を選択</h3>
+        </div>
+        <div class="section-content">
+          <p class="note">画像は端末内で処理され、外部サーバーに送信されません。</p>
+          <div class="upload-container">
+            <label for="baseImageInput" tabindex="0">画像を選択</label>
+            <input type="file" id="baseImageInput" accept="image/*" hidden>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow-card preview-card" aria-labelledby="preview-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">2</span>
+          <h3 id="preview-title">プレビュー</h3>
+        </div>
+        <div class="section-content">
+          <div class="previews-group">
+            <div id="timeline-preview">
+              <img id="timeline-icon" src="https://media.ikada.net/skyframe/placeholder.svg" alt="Profile image preview">
+              <div class="timeline-text">
+                <div class="timeline-header">
+                  <span class="timeline-name">ユーザー名</span>
+                  <span class="timeline-handle">@example</span>
+                </div>
+                <div class="timeline-post">Blueskyにもいます。</div>
+              </div>
             </div>
-            <div class="timeline-post">Blueskyにもいます。</div>
+          </div>
+          <div id="preview-container">
+            <img id="preview" alt="Profile image preview">
+            <canvas id="canvas"></canvas>
           </div>
         </div>
       </section>
-      <p class="note">見た目の調整:</p>
-      <section class="options-group">
-        <div class="option">
-          <p>デザイン</p>
-          <div class="option-buttons">
-            <label>
-              <input type="radio" name="theme" value="pop" checked><span>Pop</span>
-            </label>
-            <label>
-              <input type="radio" name="theme" value="subtle"><span>Subtle</span>
-            </label>
-            <label>
-              <input type="radio" name="theme" value="strong"><span>Strong</span>
-            </label>
-          </div>
+
+      </div>
+      <div class="column">
+      <section class="workflow-card customize-card" aria-labelledby="customize-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">3</span>
+          <h3 id="customize-title">見た目の調整</h3>
         </div>
-        <div class="option">
-          <p>文字色</p>
-          <div class="option-buttons">
-            <label>
-              <input type="radio" name="fontcolor" value="white" checked><span>White</span>
-            </label>
-            <label>
-              <input type="radio" name="fontcolor" value="lightblue"><span>Light Blue</span>
-            </label>
-            <label>
-              <input type="radio" name="fontcolor" value="black"><span>Black</span>
-            </label>
-            <label>
-              <input type="radio" name="fontcolor" value="navyblue"> <span>Navy Blue</span>
-            </label>
-          </div>
-        </div>
-        <div class="option">
-          <p>透明度</p>
-          <div class="option-buttons">
-            <label>
-              <input type="radio" name="transparency" value="a" checked>&nbsp;<span>A</span>&nbsp;
-            </label>
-            <label>
-              <input type="radio" name="transparency" value="b"><span>B</span>
-            </label>
-          </div>
-        </div>
-        <div class="option">
-          <p>メッセージ</p>
-          <div class="option-buttons">
-            <label>
-              <input type="radio" name="text" value="movingto" checked><span>Moving to</span>
-            </label>
-            <label>
-              <input type="radio" name="text" value="movedto"><span>Moved to</span>
-            </label>
+        <div class="section-content">
+          <div class="options-group">
+            <div class="option">
+              <p>デザイン</p>
+              <div class="option-buttons">
+                <label><input type="radio" name="theme" value="pop" checked><span>Pop</span></label>
+                <label><input type="radio" name="theme" value="subtle"><span>Subtle</span></label>
+                <label><input type="radio" name="theme" value="stack"><span>Stack</span></label>
+                <label><input type="radio" name="theme" value="dynamic"><span>Dynamic</span></label>
+              </div>
+            </div>
+            <div class="option">
+              <p>文字色</p>
+              <div class="option-buttons">
+                <label><input type="radio" name="fontcolor" value="white" checked><span>White</span></label>
+                <label><input type="radio" name="fontcolor" value="lightblue"><span>Light Blue</span></label>
+                <label><input type="radio" name="fontcolor" value="black"><span>Black</span></label>
+                <label><input type="radio" name="fontcolor" value="navyblue"><span>Navy Blue</span></label>
+              </div>
+            </div>
+            <div class="option">
+              <p>透明度</p>
+              <div class="option-buttons">
+                <label><input type="radio" name="transparency" value="a" checked><span>A</span></label>
+                <label><input type="radio" name="transparency" value="b"><span>B</span></label>
+              </div>
+            </div>
+            <div class="option">
+              <p>メッセージ</p>
+              <div class="option-buttons">
+                <label><input type="radio" name="text" value="movingto" checked><span>Moving to</span></label>
+                <label><input type="radio" name="text" value="movedto"><span>Moved to</span></label>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <div id="preview-container">
-        <img id="preview" alt="Profile image preview">
-        <canvas id="canvas"></canvas>
-      </div>
-      <div class="download-button">
-        <button id="downloadPngBtn">PNGを保存</button>
-        <button id="downloadJpegBtn">JPEGを保存</button>
-      </div>
-      <section>
-        <div class="link">
-          <a href="https://bsky.app/intent/compose?text=Bluesky%E3%82%92%E5%A7%8B%E3%82%81%E3%81%9F%E3%81%93%E3%81%A8%E3%82%92%E3%80%81X%E3%81%AE%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E7%94%BB%E5%83%8F%E3%81%A7%E7%9F%A5%E3%82%89%E3%81%9B%E3%82%88%E3%81%86%0D%0Ahttps%3A%2F%2Fskyframe.ikada.net/ja"
-            target="_blank">Blueskyでシェア</a>
+
+      <section class="workflow-card download-card" aria-labelledby="download-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">4</span>
+          <h3 id="download-title">ダウンロード</h3>
         </div>
-        <div class="link">
-          <a href="https://ikada.net/2025/bluesky-migration/" target="_blank">Blueskyへの「移行」に関するいろいろなプロジェクト</a>
+        <div class="section-content">
+          <p class="note">モバイル端末では、プレビュー画像を長押しして保存できます。</p>
+          <div class="download-button">
+            <button id="downloadPngBtn">PNGを保存</button>
+            <button id="downloadJpegBtn">JPEGを保存</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow-card explanation-card" aria-labelledby="explanation-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">5</span>
+          <h3 id="explanation-title">Xのアイコン画像を変更</h3>
+        </div>
+        <div class="section-content">
+          <p class="note"><a href="https://bsky.app/" target="_blank" rel="noopener noreferrer">Bluesky</a>は、単なる「昔のTwitterのようなサービス」ではなく、<a href="https://atproto.com/ja" target="_blank" rel="noopener noreferrer">分散型プロトコル</a>の工夫や<a href="https://bsky.social/about/blog/7-27-2023-custom-feeds" target="_blank" rel="noopener noreferrer">カスタムフィード</a>といった独自のおもしろい機能をもつソーシャルメディアです。</p>
+          <p class="note">この画像オーバーレイツールは、（BlueskyとXのアカウントをどちらも持っているひとが）<a href="https://x.com/settings/profile" target="_blank" rel="noopener noreferrer">X側で使うプロフィール</a>に少し手を加えることで、他のユーザーにBlueskyという選択肢を伝える……という使い方を想定して作りました。</p>
+        </div>
+      </section>
+      </div>
+
+      <section class="workflow-card other-card" aria-labelledby="other-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">6</span>
+          <h3 id="other-title">Other</h3>
+        </div>
+        <div class="section-content other-links">
+          <div class="link">
+            <a class="secondary-button" href="https://bsky.app/intent/compose?text=Bluesky%E3%81%AE%E5%AD%98%E5%9C%A8%E3%82%92X%E3%81%A7%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E4%BD%9C%E6%88%90%E3%83%84%E3%83%BC%E3%83%AB%0Ahttps%3A%2F%2Fskyframe.ikada.net/ja"
+            target="_blank">Blueskyでポスト</a>
+          </div>
+          <div class="link">
+            <a class="secondary-button" href="https://x.com/intent/tweet?text=Bluesky%E3%81%AE%E5%AD%98%E5%9C%A8%E3%82%92X%E3%81%A7%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E4%BD%9C%E6%88%90%E3%83%84%E3%83%BC%E3%83%AB%0Ahttps%3A%2F%2Fskyframe.ikada.net/ja"
+            target="_blank">Xでポスト</a>
+          </div>
+          <div class="link">
+            <a class="secondary-button" href="https://ikada.net/2025/bluesky-migration/" target="_blank" rel="noopener noreferrer">Blueskyへの移行に関するいろいろなプロジェクト</a>
+          </div>
+          <div class="link">
+            <a class="secondary-button" href="https://github.com/ikada47/skyframe" target="_blank" rel="noopener noreferrer">更新履歴 - GitHub</a>
+          </div>
+          <div class="link">
+            <a class="secondary-button" href="https://github.com/ikada47/skyframe/tree/main/media" target="_blank" rel="noopener noreferrer">画像素材をダウンロード - GitHub</a>
+          </div>
         </div>
       </section>
     </main>
+
     <footer>
-      <hr>
-      <div class="footer-meta">
-        <a href="https://github.com/ikada47/skyframe" target="_blank">更新履歴 / GitHub</a>
-        <ul>
-          <li>2025年12月 公開</li>
-          <li>2026年5月 日本語版を追加 · 文字色を追加</li>
-        </ul>
-        <p>オーバーレイ画像はAffinityで作成。Inter、Montserrat、Jostフォントを使用。</p>
-        <p>画像処理は端末内で行われます。画像は外部サーバーに送信されません。</p>
-      </div>
-      <div>
-        <p class="credit">© 2025 <a href="https://bsky.app/profile/did:plc:27vo27jqgcp7oznavyzyiw3h" target="_blank">ikada</a></p>
-      </div>
+      <p class="license">© 2025-2026 <a href="https://bsky.app/profile/did:plc:27vo27jqgcp7oznavyzyiw3h" target="_blank" rel="noopener noreferrer">ikada</a></p>
     </footer>
   </div>
   <script src="../main.js" defer></script>
