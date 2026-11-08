@@ -29,7 +29,7 @@ ikada
 It currently provides four overlay themes:
 
 - **Pop**  
-  Uses the *Inter* font  
+  Uses the *Poppins* font  
   No GenAI tools were used to draw the bird logo
 
 - **Subtle**  
@@ -45,11 +45,11 @@ All overlay images were created using Affinity (vector graphic editor).
 
 ## Release Notes
 
-- December 2025: Published a web page
+- December 2025 – Launched the website.
 
-- May 2026: Added a Japanese page, added overlay images (light blue and navy blue)
+- May 2026 – Added a Japanese page, added new overlay colors.
 
-- November 2026: Added a new overlay theme, modified the site's appearance
+- November 2026 – Added a new overlay theme, modified the site's appearance
 
 ## License
 
